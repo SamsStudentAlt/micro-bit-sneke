@@ -1,20 +1,3 @@
-function GrowthAndOrientation () {
-    if (0 < SnakeBody) {
-        SnakeBits.delete()
-    }
-    for (let index = 0; index < SnakeBody; index++) {
-        count = 0
-        if (SnakeDirection == 0) {
-            SnakeBits = game.createSprite(Snake_Head.get(LedSpriteProperty.X) - count, Snake_Head.get(LedSpriteProperty.X))
-        } else if (SnakeDirection == 90) {
-            SnakeBits = game.createSprite(Snake_Head.get(LedSpriteProperty.X) + count, Snake_Head.get(LedSpriteProperty.X))
-        } else if (SnakeDirection == 180) {
-            SnakeBits = game.createSprite(Snake_Head.get(LedSpriteProperty.X), Snake_Head.get(LedSpriteProperty.X) + count)
-        } else if (SnakeDirection == 270) {
-            SnakeBits = game.createSprite(Snake_Head.get(LedSpriteProperty.X), Snake_Head.get(LedSpriteProperty.X) - count)
-        }
-    }
-}
 function betterSpawing () {
     while (true) {
         FruitX = randint(0, 4)
@@ -38,7 +21,6 @@ function MoveOrDie () {
         Death()
     } else {
         Snake_Head.move(1)
-        GrowthAndOrientation()
     }
 }
 input.onButtonPressed(Button.A, function () {
@@ -77,8 +59,6 @@ input.onButtonPressed(Button.B, function () {
 let FRUIT: game.LedSprite = null
 let FruitY = 0
 let FruitX = 0
-let count = 0
-let SnakeBits: game.LedSprite = null
 let yes = false
 let Snake_Head: game.LedSprite = null
 let SnakeDirection = 0
