@@ -1,18 +1,6 @@
 function GrowthAndOrientation () {
-    if (0 < SnakeBody) {
-        SnakeBits.delete()
-    }
-    for (let index = 0; index < SnakeBody; index++) {
-        count = 0
-        if (SnakeDirection == 0) {
-            SnakeBits = game.createSprite(Snake_Head.get(LedSpriteProperty.X) - count, Snake_Head.get(LedSpriteProperty.X))
-        } else if (SnakeDirection == 90) {
-            SnakeBits = game.createSprite(Snake_Head.get(LedSpriteProperty.X) + count, Snake_Head.get(LedSpriteProperty.X))
-        } else if (SnakeDirection == 180) {
-            SnakeBits = game.createSprite(Snake_Head.get(LedSpriteProperty.X), Snake_Head.get(LedSpriteProperty.X) + count)
-        } else if (SnakeDirection == 270) {
-            SnakeBits = game.createSprite(Snake_Head.get(LedSpriteProperty.X), Snake_Head.get(LedSpriteProperty.X) - count)
-        }
+    if (true) {
+    	
     }
 }
 function betterSpawing () {
@@ -38,7 +26,6 @@ function MoveOrDie () {
         Death()
     } else {
         Snake_Head.move(1)
-        GrowthAndOrientation()
     }
 }
 input.onButtonPressed(Button.A, function () {
@@ -46,6 +33,10 @@ input.onButtonPressed(Button.A, function () {
     SnakeDirection += 90
     if (SnakeDirection == 360) {
         SnakeDirection = 0
+    }
+    DirectionArray.unshift(SnakeDirection)
+    if (DirectionArray.length > 4) {
+        DirectionArray.pop()
     }
 })
 function AppleYummie () {
@@ -73,21 +64,25 @@ input.onButtonPressed(Button.B, function () {
     if (SnakeDirection < 0) {
         SnakeDirection = 270
     }
+    DirectionArray.unshift(SnakeDirection)
+    if (DirectionArray.length > 4) {
+        DirectionArray.pop()
+    }
 })
 let FRUIT: game.LedSprite = null
 let FruitY = 0
 let FruitX = 0
-let count = 0
-let SnakeBits: game.LedSprite = null
 let yes = false
 let Snake_Head: game.LedSprite = null
 let SnakeDirection = 0
 let SnakeBody = 0
+let DirectionArray: number[] = []
 game.setScore(0)
 music.setBuiltInSpeakerEnabled(true)
 music.startMelody(music.builtInMelody(Melodies.Chase), MelodyOptions.Forever)
 let ABAbility = true
 while (true) {
+    DirectionArray = []
     SnakeBody = 0
     SnakeDirection = 0
     Snake_Head = game.createSprite(0, 0)
