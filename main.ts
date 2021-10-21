@@ -2,6 +2,23 @@ function GrowthAndOrientation () {
     if (true) {
     	
     }
+    for (let index = 0; index < game.score(); index++) {
+        if (SnakeDirection == 0) {
+            if (Snake_Head.get(LedSpriteProperty.X) - SnakeBodyScore != 0) {
+                SnakeBits = game.createSprite(Snake_Head.get(LedSpriteProperty.X) - 1, Snake_Head.get(LedSpriteProperty.Y))
+            } else {
+                if (DirectionArray[1] == 90 && Snake_Head.get(LedSpriteProperty.Y) - SnakeBodyScore != 0) {
+                	
+                } else if (false) {
+                	
+                } else {
+                	
+                }
+            }
+        }
+        SnakeBodyScore += -1
+        looptimes += 1
+    }
 }
 function betterSpawing () {
     while (true) {
@@ -26,6 +43,7 @@ function MoveOrDie () {
         Death()
     } else {
         Snake_Head.move(1)
+        GrowthAndOrientation()
     }
 }
 input.onButtonPressed(Button.A, function () {
@@ -72,11 +90,14 @@ input.onButtonPressed(Button.B, function () {
 let FRUIT: game.LedSprite = null
 let FruitY = 0
 let FruitX = 0
+let SnakeBits: game.LedSprite = null
+let SnakeBodyScore = 0
 let yes = false
 let Snake_Head: game.LedSprite = null
 let SnakeDirection = 0
 let SnakeBody = 0
 let DirectionArray: number[] = []
+let looptimes = 0
 game.setScore(0)
 music.setBuiltInSpeakerEnabled(true)
 music.startMelody(music.builtInMelody(Melodies.Chase), MelodyOptions.Forever)
